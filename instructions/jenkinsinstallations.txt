@@ -1,0 +1,78 @@
+INSTALL HELM:
+	curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+	helm version
+
+
+INSTALL DOCKER
+	Step 1: Update Packages
+
+				sudo apt-get update -y
+
+Step 2: Install Required Dependencies
+
+			sudo apt-get install -y ca-certificates curl gnupg
+
+Step 3: Add Docker’s Official GPG Key
+
+			sudo install -m 0755 -d /etc/apt/keyrings
+			curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
+			sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+
+Step 4: Add Docker Repository
+
+			echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+Step 5: Update Package List Again
+
+			sudo apt-get update -y
+
+Step 6: Install Docker
+
+			sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+Step 7: Verify Docker Installation
+
+			docker --version
+
+Step 8: Enable and Start Docker
+
+			sudo systemctl enable --now docker
+
+Step 9: Run a Test Container
+
+			sudo docker run hello-world
+
+INSTALL datree plugin
+	step1:install unzip
+		apt install unzip
+	
+	step2: install helm plugin of datree
+		helm plugin install https://github.com/datreeio/helm-datree
+
+
+CREATE  PIPELINE 
+	JAVA_GRADLE_APP
+		1) PIPELINE: pipeline scripts from scm 
+		2)copy paste github Repository
+		3)branches: deveops
+		4)save
+
+INSTALL SONAR PLUGINS
+
+UPDATE SONAR SYSTEM CONFIGURATION
+	1)SYSTEM
+	2)SONAR QUBE SERVERS
+		a)name
+		b)sonar url
+		c)server authentication password
+				create authentication token on sonar server 
+				securit>users>token
+				name >generate>copy paste the token as secret text in jenkins>managejenkins>credentials>secret text
+
+DOWNLOAD DOCKER PLUGINS
+ 1)docker pipeline
+ 2)docker build step1
+ 3)loading plugin extenisons
+			
